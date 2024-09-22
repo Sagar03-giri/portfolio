@@ -1,4 +1,4 @@
-/* General styles */
+/* General Styles */
 * {
     margin: 0;
     padding: 0;
@@ -7,8 +7,10 @@
 
 body {
     font-family: 'Poppins', sans-serif;
-    color: #333;
+    background-color: #0d0d0d;
+    color: #f4f4f4;
     line-height: 1.6;
+    overflow-x: hidden;
 }
 
 .container {
@@ -19,24 +21,26 @@ body {
 
 /* Header and Navbar */
 header {
-    background-color: #333;
+    background-color: #1a1a1a;
     color: #fff;
     padding: 1rem 0;
     position: fixed;
     width: 100%;
     top: 0;
     z-index: 1000;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
 }
 
 .logo {
-    font-size: 1.5rem;
+    font-size: 1.8rem;
     font-weight: bold;
+    color: #00ffff;
 }
 
 nav ul {
     list-style: none;
     display: flex;
-    gap: 1rem;
+    gap: 1.5rem;
 }
 
 nav ul li {
@@ -52,59 +56,83 @@ nav ul li a {
 }
 
 nav ul li a:hover {
-    color: #ffd700;
+    color: #00ffff;
 }
 
 /* Hero Section */
 .hero-section {
-    background: url('background.jpg') no-repeat center center/cover;
+    background: linear-gradient(135deg, #0d0d0d, #1a1a1a);
     height: 100vh;
     display: flex;
     align-items: center;
     justify-content: center;
     text-align: center;
-    color: #fff;
+    color: #00ffff;
+    position: relative;
+}
+
+.hero-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
 }
 
 .hero-section h2 {
     font-size: 3rem;
+    z-index: 1;
 }
 
 .hero-section span {
-    color: #ffd700;
+    color: #ff00ff;
 }
 
 .hero-section .btn {
     margin-top: 1.5rem;
     padding: 1rem 2rem;
-    background-color: #ffd700;
-    color: #333;
+    background-color: transparent;
+    color: #00ffff;
     text-decoration: none;
     font-weight: bold;
+    border: 2px solid #00ffff;
     border-radius: 5px;
-    transition: background-color 0.3s ease;
+    transition: all 0.3s ease;
+    z-index: 1;
 }
 
 .hero-section .btn:hover {
-    background-color: #ffae00;
+    background-color: #00ffff;
+    color: #0d0d0d;
 }
 
 /* About Section */
 .about-section {
     padding: 4rem 0;
-    background-color: #f4f4f4;
+    background-color: #1a1a1a;
     text-align: center;
+    color: #fff;
 }
 
 .about-section h2 {
     font-size: 2.5rem;
     margin-bottom: 1rem;
+    color: #00ffff;
 }
 
 /* Projects Section */
 .projects-section {
     padding: 4rem 0;
     text-align: center;
+    background-color: #0d0d0d;
+}
+
+.projects-section h2 {
+    color: #ff00ff;
+    font-size: 2.5rem;
+    margin-bottom: 2rem;
 }
 
 .projects-grid {
@@ -115,12 +143,19 @@ nav ul li a:hover {
 }
 
 .project-item {
-    background-color: #fff;
+    background-color: #1a1a1a;
     padding: 1rem;
-    border-radius: 5px;
+    border-radius: 10px;
     width: calc(33.333% - 2rem);
     text-align: center;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease;
+    border: 2px solid transparent;
+}
+
+.project-item:hover {
+    transform: scale(1.05);
+    border-color: #00ffff;
 }
 
 .project-item img {
@@ -131,12 +166,20 @@ nav ul li a:hover {
 
 .project-item h3 {
     font-size: 1.5rem;
+    color: #00ffff;
 }
 
 /* Contact Section */
 .contact-section {
     padding: 4rem 0;
     text-align: center;
+    background-color: #1a1a1a;
+}
+
+.contact-section h2 {
+    color: #ff00ff;
+    font-size: 2.5rem;
+    margin-bottom: 1.5rem;
 }
 
 form input,
@@ -145,13 +188,22 @@ form textarea {
     padding: 1rem;
     margin-bottom: 1rem;
     border-radius: 5px;
-    border: 1px solid #ccc;
+    border: 2px solid #00ffff;
+    background-color: #0d0d0d;
+    color: #fff;
+    transition: border-color 0.3s ease;
+}
+
+form input:focus,
+form textarea:focus {
+    border-color: #ff00ff;
+    outline: none;
 }
 
 form button {
     padding: 1rem 2rem;
-    background-color: #333;
-    color: #fff;
+    background-color: #00ffff;
+    color: #0d0d0d;
     border: none;
     border-radius: 5px;
     cursor: pointer;
@@ -159,13 +211,14 @@ form button {
 }
 
 form button:hover {
-    background-color: #555;
+    background-color: #ff00ff;
+    color: #fff;
 }
 
 /* Footer */
 footer {
-    background-color: #333;
-    color: #fff;
+    background-color: #0d0d0d;
+    color: #00ffff;
     text-align: center;
     padding: 1rem 0;
     margin-top: 2rem;
@@ -173,6 +226,31 @@ footer {
 
 footer p {
     margin: 0;
+}
+
+/* Glowing Button Effect */
+.btn-glow {
+    position: relative;
+    z-index: 1;
+    overflow: hidden;
+}
+
+.btn-glow::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background-color: rgba(0, 255, 255, 0.2);
+    opacity: 0;
+    transform: rotate(45deg);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.btn-glow:hover::before {
+    opacity: 1;
+    transform: rotate(0deg) translate(25%, 25%);
 }
 
 /* Responsive Design */
@@ -185,7 +263,7 @@ footer p {
 @media (max-width: 480px) {
     nav ul {
         flex-direction: column;
-        gap: 0;
+        gap: 0.5rem;
     }
 
     nav ul li {
